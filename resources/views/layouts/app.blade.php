@@ -12,10 +12,15 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&display=swap" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @stack('login-styles')
+    <style type="text/css">
+    	* {
+    		font-family: 'Comfortaa', cursive !important;
+    	}
+    </style>
 </head>
 @guest
     <body id="kt_body" class="header-fixed subheader-enabled page-loading">

@@ -22,69 +22,29 @@
                                 <p class="text-muted font-weight-bold">Enter your username and password</p>
                             </div>
                             <!--begin::Form-->
-                            <form class="form" novalidate="novalidate" id="kt_login_signin_form">
+                            <form method="POST" class="form" novalidate="novalidate" id="kt_login_signin_form" action="{{ route('login') }}">
+                                @csrf
                                 <div class="form-group py-3 m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="Email" placeholder="Email" name="username" autocomplete="off" />
+                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="Email" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="off" />
                                 </div>
                                 <div class="form-group py-3 border-top m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="Password" placeholder="Password" name="password" />
+                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="Password" placeholder="Password" name="password" required />
                                 </div>
                                 <div class="form-group d-flex flex-wrap justify-content-between align-items-center mt-3">
                                     <div class="checkbox-inline">
                                         <label class="checkbox checkbox-outline m-0 text-muted">
-                                            <input type="checkbox" name="remember" />
+                                            <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} />
                                             <span></span>Remember me</label>
                                     </div>
                                     <a href="javascript:;" id="kt_login_forgot" class="text-muted text-hover-primary">Forgot Password ?</a>
                                 </div>
                                 <div class="form-group d-flex flex-wrap justify-content-between align-items-center mt-2">
-                                    <div class="my-3 mr-2">
-                                        <span class="text-muted mr-2">Don't have an account?</span>
-                                        <a href="javascript:;" id="kt_login_signup" class="font-weight-bold">Signup</a>
-                                    </div>
-                                    <button id="kt_login_signin_submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3">Sign In</button>
+                                    <button type="submit" id="kt_login_signin_submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3">Sign In</button>
                                 </div>
                             </form>
                             <!--end::Form-->
                         </div>
-                        <!--end::Signin-->
-                        <!--begin::Signup-->
-                        <div class="login-form login-signup">
-                            <div class="text-center mb-10 mb-lg-20">
-                                <h3 class="">Sign Up</h3>
-                                <p class="text-muted font-weight-bold">Enter your details to create your account</p>
-                            </div>
-                            <!--begin::Form-->
-                            <form class="form" novalidate="novalidate" id="kt_login_signup_form">
-                                <div class="form-group py-3 m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="text" placeholder="Fullname" name="fullname" autocomplete="off" />
-                                </div>
-                                <div class="form-group py-3 border-top m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="password" placeholder="Email" name="email" autocomplete="off" />
-                                </div>
-                                <div class="form-group py-3 border-top m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="password" placeholder="Password" name="password" autocomplete="off" />
-                                </div>
-                                <div class="form-group py-3 border-top m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="password" placeholder="Confirm password" name="cpassword" autocomplete="off" />
-                                </div>
-                                <div class="form-group mt-5">
-                                    <div class="checkbox-inline">
-                                        <label class="checkbox checkbox-outline">
-                                            <input type="checkbox" name="agree" />
-                                            <span></span>I Agree the
-                                            <a href="#" class="ml-1">terms and conditions</a>.</label>
-                                    </div>
-                                </div>
-                                <div class="form-group d-flex flex-wrap flex-center">
-                                    <button id="kt_login_signup_submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">Submit</button>
-                                    <button id="kt_login_signup_cancel" class="btn btn-outline-primary font-weight-bold px-9 py-4 my-3 mx-2">Cancel</button>
-                                </div>
-                            </form>
-                            <!--end::Form-->
-                        </div>
-                        <!--end::Signup-->
-                        <!--begin::Forgot-->
+
                         <div class="login-form login-forgot">
                             <div class="text-center mb-10 mb-lg-20">
                                 <h3 class="">Forgotten Password ?</h3>
@@ -106,14 +66,6 @@
                     </div>
                     <!--end::Aside body-->
                     <!--begin: Aside footer for desktop-->
-                    <div class="d-flex flex-column-auto justify-content-between mt-15">
-                        <div class="text-dark-50 font-weight-bold order-2 order-sm-1 my-2">© 2020 Metronic</div>
-                        <div class="d-flex order-1 order-sm-2 my-2">
-                            <a href="#" class="text-muted text-hover-primary">Privacy</a>
-                            <a href="#" class="text-muted text-hover-primary ml-4">Legal</a>
-                            <a href="#" class="text-muted text-hover-primary ml-4">Contact</a>
-                        </div>
-                    </div>
                     <!--end: Aside footer for desktop-->
                 </div>
                 <!--end: Aside Container-->
@@ -124,9 +76,8 @@
                 <!--begin::Content body-->
                 <div class="d-flex flex-column-fluid flex-lg-center">
                     <div class="d-flex flex-column justify-content-center">
-                        <h3 class="display-3 font-weight-bold my-7 text-white">Welcome to Metronic!</h3>
-                        <p class="font-weight-bold font-size-lg text-white opacity-80">The ultimate Bootstrap, Angular 8, React &amp; VueJS admin theme
-                            <br />framework for next generation web apps.</p>
+                        <h3 class="display-3 font-weight-bold my-7 text-white">Welcome to GiveBot!</h3>
+                        <p class="font-weight-bold font-size-lg text-white opacity-80">The ultimate Bootstrap admin theme framework for telegram bot.</p>
                     </div>
                 </div>
                 <!--end::Content body-->
@@ -158,7 +109,7 @@
         <script src="{{asset('libs/assets/js/scripts.bundle.js?v=7.0.5')}}"></script>
         <!--end::Global Theme Bundle-->
         <!--begin::Page Scripts(used by this page)-->
-        <script src="{{asset('libs/assets/js/pages/custom/login/login-general.js?v=7.0.5')}}"></script>
+        <!--<script src="{{asset('libs/assets/js/pages/custom/login/login-general.js?v=7.0.5')}}"></script>-->
         <!--end::Page Scripts-->
     @endpush
 @endsection
