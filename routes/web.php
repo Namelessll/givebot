@@ -21,11 +21,14 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/competition/create', 'HomeController@getCompetitionCreatePage')->name('getCompetitionCreatePage');
+    Route::get('/competition/list', 'HomeController@getCompetitionListPage')->name('getCompetitionListPage');
+
 
     /*post*/
     Route::post('/dashboard/setting/domain/set', 'Dashboard\ServicesController@setApiDomain')->name('setApiDomain');
     Route::post('/setwebhook', 'Dashboard\ServicesController@setWebhook')->name('setWebhook');
     Route::post('/removewebhook', 'Dashboard\ServicesController@removeWebhook')->name('removeWebhook');
+    Route::post('/competition/create', 'Dashboard\ServicesController@createCompetition')->name('createCompetition');
 });
 
 

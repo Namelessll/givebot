@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dashboard\ServicesModel;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -18,5 +19,11 @@ class HomeController extends Controller
 
     public function getCompetitionCreatePage() {
         return view('pages.competition.create');
+    }
+
+    public function getCompetitionListPage() {
+        $servicesModel = new ServicesModel();
+        $data['competitions'] = $servicesModel->getCompetitions();
+        return view('pages.competition.list', $data);
     }
 }

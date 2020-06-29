@@ -33,7 +33,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Api</a>
+                        <a class="nav-link" href="{{route('home')}}">Api</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -41,7 +41,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="{{route('getCompetitionCreatePage')}}">Create competition</a>
-                            <a class="dropdown-item" href="#">Competitions statistic</a>
+                            <a class="dropdown-item" href="{{route('getCompetitionListPage')}}">Competitions statistic</a>
                         </div>
                     </li>
                     <li class="nav-item">
