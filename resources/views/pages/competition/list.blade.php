@@ -21,8 +21,8 @@
                                     <li class="list-group-item">{{$item->title_post}}</li>
                                     <li class="list-group-item"><b>Дата начала:</b> {{$item->post_start}}</li>
                                     <li class="list-group-item"><b>Дата окончания:</b> {{$item->post_end}}</li>
-                                    <li class="list-group-item"><b>Статус:</b> @if ($item->status == 1) В процессе @else Не активен @endif</li>
-                                    <li class="list-group-item"><b>Участников:</b> 155</li>
+                                    <li class="list-group-item"><b>Статус:</b> @if ($item->status == 1) В процессе @elseif ($item->status == 2)Завершен @else Не активен @endif</li>
+                                    <li class="list-group-item"><b>Участников:</b> {{\App\Classes\Cron\CronModel\CronModel::getUsersCountForCompetition($item->id)}}</li>
                                 </ul>
                                 <hr style="background: #ffa500; border: none; height: 4px; width: 100%;">
                                 @endforeach

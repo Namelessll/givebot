@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Bot;
 
 use App\Classes\Bot\Sender\SenderMessages;
+use App\Classes\Cron\CronModel\CronModel;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -27,10 +28,12 @@ class UpdateController extends Controller
             self::keepRequest($request);
 
         try {
-            if (isset(self::$messageText)) {
-                //Carbon::parse($competition->post_start) >= Carbon::now()
-                SenderMessages::getInstance()->startBot(self::$messageText, self::$userId, self::$username, self::$userFirstName);
-            }
+
+            SenderMessages::getInstance()->startBot(self::$messageText, self::$userId, self::$username, self::$userFirstName);
+            SenderMessages::getInstance()->getInfoAboutCompetition(self::$messageText, self::$userId);
+            SenderMessages::getInstance()->checkMyMember(self::$messageText, self::$userId);
+            SenderMessages::getInstance()->getRules(self::$messageText, self::$userId);
+            SenderMessages::getInstance()->getFriendMess(self::$messageText, self::$userId);
         } catch (\Throwable $e) {
             Telegram::sendMessage([
                 'chat_id' => 509940535,

@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Classes\Bot\Buttons;
+namespace App\Classes\Bot\Competitions;
 
 
-class Buttons
+class Competition
 {
     protected static $_instance;
 
@@ -25,11 +25,12 @@ class Buttons
     private function __wakeup() {
     }
 
-    public function returnMainMenuButtons() {
-        return [
-            ['⚠ Информация о розогрыше', '🔎 Проверить мое участие'],
-            ['👬 Пригласить друга'],
-            ['Правила'],
-        ];
+    private static function cutInviteId($text) {
+        $rsMessage = explode(' ', $text);
+        if (isset($rsMessage[1]))
+            return $rsMessage[1];
+        else
+            return 0;
     }
+
 }

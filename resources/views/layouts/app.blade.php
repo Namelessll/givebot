@@ -44,9 +44,9 @@
                             <a class="dropdown-item" href="{{route('getCompetitionListPage')}}">Competitions statistic</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Mailer</a>
-                    </li>
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link" href="#">Mailer</a>--}}
+{{--                    </li>--}}
                 </ul>
             </div>
         </nav>

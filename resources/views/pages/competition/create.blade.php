@@ -19,7 +19,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="title_post">Название</label>
-                                    <input type="text" class="form-control" id="title_post" placeholder="name@example.com" name="title_post">
+                                    <input type="text" class="form-control" id="title_post" placeholder="Concurs №1" name="title_post">
                                 </div>
                                 <div class="form-group">
                                     <label for="post_content">Текст конкурса</label>
@@ -29,10 +29,10 @@
                                     <label for="finish_post_content">Текст финиша</label>
                                     <textarea class="form-control" id="finish_post_content" rows="3" name="finish_post_content"></textarea>
                                 </div>
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="users_link" name="users_link">
-                                    <label class="custom-control-label" for="users_link">Добавить условие "Пригласить друга"</label>
-                                </div>
+{{--                                <div class="custom-control custom-switch">--}}
+{{--                                    <input type="checkbox" class="custom-control-input" id="users_link" name="users_link">--}}
+{{--                                    <label class="custom-control-label" for="users_link">Добавить условие "Пригласить друга"</label>--}}
+{{--                                </div>--}}
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="users_count" name="users_count">
                                     <label class="custom-control-label" for="users_count">Отображать количество участников</label>
