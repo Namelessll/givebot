@@ -12,6 +12,12 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('table_bot_messages')
+            ->insert([
+                'message_code' => 'rules',
+                'message_text' => 'Никаких правил нету :)',
+            ]);
+
     	DB::table('users')
             ->insert([
                 'name' => 'admin',

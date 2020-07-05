@@ -15,7 +15,7 @@ class BotUsersModel extends Model
                    'user_id' => $userId,
                    'invite_id' => $inviteId,
                    'username' => $username,
-                   'name' => $name,
+                   'name' => $name ?? '',
                    'created_at' => Carbon::now()
                 ]);
             return true;

@@ -2,7 +2,7 @@
 
 return [
 
-    'bot_token' => env('TELEGRAM_BOT_TOKEN', '1262368552:AAGJmetULW8SxPZ3fMaZ1rh4JwI4eeQsT10'),
+    'bot_token' => env('TELEGRAM_BOT_TOKEN', '1288861330:AAEGaumQ73tjt0uKArMVikap_xbMVkU91SU'),
     /*
     |--------------------------------------------------------------------------
     | Your Telegram Bots
@@ -36,7 +36,7 @@ return [
     'bots'                         => [
         'mybot' => [
             'username'            => 'TelegramBot',
-            'token'               => env('TELEGRAM_BOT_TOKEN', '1262368552:AAGJmetULW8SxPZ3fMaZ1rh4JwI4eeQsT10'),
+            'token'               => env('TELEGRAM_BOT_TOKEN', '1288861330:AAEGaumQ73tjt0uKArMVikap_xbMVkU91SU'),
             'certificate_path'    => env('TELEGRAM_CERTIFICATE_PATH', 'YOUR-CERTIFICATE-PATH'),
             'webhook_url'         => env('TELEGRAM_WEBHOOK_URL', 'YOUR-BOT-WEBHOOK-URL'),
             'commands'            => [

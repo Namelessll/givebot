@@ -35,7 +35,7 @@ class Registration
             return 0;
     }
 
-    public function registerUserIfNoExist($text, $userId, $userName, $userFirstName) {
+    public function registerUserIfNoExist($text, $userId, $userName, $userFirstName = "") {
         return BotUsersModel::registerUserIfNoExist($userId, self::cutInviteId($text), $userName, $userFirstName);
     }
 

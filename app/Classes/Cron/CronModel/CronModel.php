@@ -73,4 +73,44 @@ class CronModel extends Model
 
     }
 
+    public static function updateUserColumn($inviteId, $userId) {
+        return DB::table('table_bot_users')
+            ->where('table_bot_users.user_id', $userId)
+            ->update([
+                'invite_id' => $inviteId
+            ]);
+    }
+
+    public static function getUserColumn($userId) {
+        $response = DB::table('table_bot_users')
+            ->where('table_bot_users.user_id', $userId)
+            ->where('table_bot_users.status_register', 0)
+            ->select('table_bot_users.*')
+            ->get();
+        if (isset($response))
+            return $response;
+        else
+            return [];
+    }
+
+    public static function getSettingByCode($code) {
+        return DB::table('table_bot_messages')
+            ->where('table_bot_messages.message_code', $code)
+            ->select('table_bot_messages.*')
+            ->get();
+    }
+
+    public static function setSettingByCode($code, $content, $int = 0) {
+        return DB::table('table_bot_messages')
+            ->updateOrInsert(
+                [
+                    'message_code' => $code,
+                ],
+                [
+               'message_code' => $code,
+                'message_text' => $content,
+                'message_int' => $int
+            ]);
+    }
+
 }

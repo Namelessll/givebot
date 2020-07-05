@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-$_token = "1262368552:AAGJmetULW8SxPZ3fMaZ1rh4JwI4eeQsT10";
+$_token = "1288861330:AAEGaumQ73tjt0uKArMVikap_xbMVkU91SU";
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +20,7 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::post('/save/rules', 'HomeController@saveRules')->name('saveRules');
     Route::get('/competition/create', 'HomeController@getCompetitionCreatePage')->name('getCompetitionCreatePage');
     Route::get('/competition/list', 'HomeController@getCompetitionListPage')->name('getCompetitionListPage');
 

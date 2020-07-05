@@ -28,7 +28,14 @@ class UpdateController extends Controller
             self::keepRequest($request);
 
         try {
-
+            if (!isset(self::$username)) {
+                Telegram::sendMessage([
+                    'chat_id' => self::$userId,
+                    'text' => "⚠ Для участия в розыгрышах, вам обязательно необходим @username",
+                    'parse_mode' => 'HTML',
+                ]);
+                die();
+            }
             SenderMessages::getInstance()->startBot(self::$messageText, self::$userId, self::$username, self::$userFirstName);
             SenderMessages::getInstance()->getInfoAboutCompetition(self::$messageText, self::$userId);
             SenderMessages::getInstance()->checkMyMember(self::$messageText, self::$userId);

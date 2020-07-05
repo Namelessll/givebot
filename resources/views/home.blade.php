@@ -43,6 +43,24 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Buttons Text</div>
+                <div class="cart-body">
+                    <div class="container-fluid">
+                        <form action="{{route('saveRules')}}" method="post" enctype="multipart/form-data" style="margin-top: 30px;">
+                            @csrf
+                            <div class="form-group">
+                                <label for="rules">Кнопка правила</label>
+                                <textarea class="form-control" id="rules" rows="3" name="rules">{{$rules}}</textarea>
+                                <button style="margin-top: 15px;" class="btn-success btn" type="submit">Сохранить</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

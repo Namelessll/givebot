@@ -32,11 +32,7 @@ class SenderMessages
     public function startBot($text, $userId, $userName, $userFirstName) {
         if (mb_stristr($text, '/start')) {
             if (isset(explode(' ', $text)[1]))
-                Telegram::sendMessage([
-                    'chat_id' => explode(' ', $text)[1],
-                    'text' => "Ваш шанс выигрыша увеличен на 0.1%",
-                    'parse_mode' => 'HTML',
-                ]);
+                CronModel::updateUserColumn(explode(' ', $text)[1], $userId);
 
             $response = Registration\Registration::getInstance()->registerUserIfNoExist($text, $userId, $userName, $userFirstName);
 
@@ -48,7 +44,7 @@ class SenderMessages
             if ($response)
                 Telegram::sendMessage([
                     'chat_id' => $userId,
-                    'text' => "Вы успешно зарегистрированы в конкурсе!🥳\nПозавершению розыгрыша будет объявлен победитель!\nЕсли им окажитесь вы, бот пришлет вам уведомление 🛎",
+                    'text' => "Вы успешно зарегистрированы, нажмите кнопку \"Информация о розыгрыше\", что бы узнать подробности конкурса.",
                     'parse_mode' => 'HTML',
                     'reply_markup' => $reply_markup
                 ]);
@@ -149,8 +145,17 @@ class SenderMessages
                 if ($idsUser) {
                     Telegram::sendMessage([
                         'chat_id' => $userId,
-                        'text' => '✅ Вы выполнили все условия розыгрыша. Ваш идентивикатор: ' . $idsUser
+                        'text' => "Вы успешно зарегистрированы в конкурсе!🥳\nПозавершению розыгрыша будет объявлен победитель!\nЕсли им окажитесь вы, бот пришлет вам уведомление 🛎\nВаш уникальный идентификатор" . $idsUser
                     ]);
+                    $modelData = CronModel::getUserColumn($userId);
+                    if (!empty($modelData))
+                        if ($modelData[0]->invite_id != 0)
+                            Telegram::sendMessage([
+                                'chat_id' => $modelData[0]->invite_id,
+                                'text' => "Ваш шанс выигрыша увеличен на 0.1%",
+                                'parse_mode' => 'HTML',
+                            ]);
+
                 } else {
                     Telegram::sendMessage([
                         'chat_id' => $userId,

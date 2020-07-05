@@ -9,7 +9,7 @@ use Telegram;
 
 class ServicesController extends Controller
 {
-    private static $_token = "1262368552:AAGJmetULW8SxPZ3fMaZ1rh4JwI4eeQsT10";
+    private static $_token = "1288861330:AAEGaumQ73tjt0uKArMVikap_xbMVkU91SU";
     public function setWebhook(Request $request) {
         $_host = ServicesModel::getSetting('domain_address')[0]->setting_value;
         $result = Telegram::setWebhook([
